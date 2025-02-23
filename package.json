@@ -1,0 +1,58 @@
+{
+  "name": "react-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "lint:style": "stylelint 'src/**/*.{css}'",
+    "lint:style:fix": "stylelint 'src/**/*.{css}' --fix",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.8",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "js-beautify": "^1.15.3",
+    "motion": "^12.4.7",
+    "prism-react-renderer": "^2.4.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.1.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@types/js-beautify": "^1.14.3",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "postcss": "^8.5.3",
+    "postcss-styled-syntax": "^0.7.1",
+    "prettier": "3.5.2",
+    "stylelint": "^16.6.1",
+    "stylelint-config-standard": "^37.0.0",
+    "stylelint-prettier": "^5.0.0",
+    "tailwindcss": "^4.0.8",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.22.0",
+    "vite": "^6.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js,jsx,json,md}": "prettier --write"
+  }
+}

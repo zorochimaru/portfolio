@@ -1,0 +1,27 @@
+@import 'tailwindcss';
+
+:root {
+  --primary-bg: #252526;
+  --secondary-bg: #3f3f3f;
+  --primary-fg: #fff;
+  --secondary-bg-2: #2d2d2d;
+  --primary-dark-bg: #1e1e1e;
+  --dark-bg: #303031;
+  --dark-bg2: #313030;
+}
+
+body {
+  background-color: var(--primary-bg);
+  color: var(--primary-fg);
+  font-family: Roboto, serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
+  font-weight: 400;
+  margin: 0;
+  overflow: clip;
+}
+
+.token .function {
+  cursor: pointer !important;
+}

@@ -1,0 +1,10 @@
+
+.title-header {
+  align-items: center;
+  background: var(--secondary-bg);
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
