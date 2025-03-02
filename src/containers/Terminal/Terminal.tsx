@@ -3,9 +3,23 @@ import { FC } from 'react';
 
 const text = 'Click on method names to see output 👆👆👆';
 
+const terminalVariants = {
+  hidden: { opacity: 0, translateY: '100vh' },
+  visible: {
+    opacity: 1,
+    translateY: 0,
+    transition: { duration: 0.5, ease: [0, 0.71, 0.2, 1.01] },
+  },
+};
+
 export const Terminal: FC = () => {
   return (
-    <div className="border-t-1 min-h-[200px] px-4 py-3 border-gray-600">
+    <motion.div
+      variants={terminalVariants}
+      initial="hidden"
+      animate="visible"
+      className="border-t-1 min-h-[200px] px-4 py-3 border-gray-600"
+    >
       <div className="flex gap-3">
         <span>
           <u>Terminal</u>
@@ -28,6 +42,6 @@ export const Terminal: FC = () => {
           </motion.span>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
