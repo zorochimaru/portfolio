@@ -7,6 +7,7 @@ import { Method } from '../../enums';
 import { CalculateExperience } from './CalculateExperience/CalculateExperience';
 import { Introduce } from './Introduce/Introduce';
 import './OutputPanel.css';
+import { Projects } from './Projects/Projects';
 import { Stack } from './Stack/Stack';
 
 const outputPanelVariants: Variants = {
@@ -54,6 +55,7 @@ export const OutputPanel: FC<{ message: Method }> = ({ message }) => {
             {message === Method.introduce && <Introduce />}
             {message === Method.showStack && <Stack />}
             {message === Method.calculateExperience && <CalculateExperience />}
+            {message === Method.projects && <Projects />}
           </AnimatePresence>
         </Suspense>
       </div>
