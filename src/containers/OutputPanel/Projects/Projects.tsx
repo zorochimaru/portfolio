@@ -13,56 +13,56 @@ const projects: Project[] = [
   {
     name: 'SimeHUB Employee Platform',
     description: 'Employee management platform for SimeHUB.',
-    logo: 'logos/simehub.png',
-    screenshot: 'screenshots/simehub.jpg',
+    logo: 'simehub.webp',
+    screenshot: 'simehub.webp',
     link: 'https://simehub.sime.com/',
   },
   {
     name: 'YourHD Employee Platform',
     description: 'Employee management platform for Hastings Deering.',
-    logo: 'logos/yourhd.png',
-    screenshot: 'screenshots/yourhd.jpg',
+    logo: 'yourhd.webp',
+    screenshot: 'yourhd.webp',
     link: 'https://yourhd.hastingsdeering.com.au/',
   },
   {
     name: 'myTSL Employee Platform',
     description: 'Employee management platform for myTSL.',
-    logo: 'logos/tsl.png',
-    screenshot: 'screenshots/tsl.jpg',
+    logo: 'tsl.webp',
+    screenshot: 'tsl.webp',
     link: 'https://mytsl.tractors.com.sg/',
   },
   {
     name: 'GFO Employee Platform',
     description: 'Employee management platform for Ground Force Online.',
-    logo: 'logos/gfo.png',
-    screenshot: 'screenshots/gfo.jpg',
+    logo: 'gfo.webp',
+    screenshot: 'gfo.webp',
     link: 'https://gfo.terracat.co.nz/',
   },
   {
     name: 'Gamesummit Jury Voting',
     description: 'Jury voting app for Gamesummit event.',
-    logo: 'logos/gamesummit.png',
-    screenshot: 'screenshots/gamesummit.jpg',
+    logo: 'gamesummit.webp',
+    screenshot: 'gamesummit.webp',
     link: 'https://gamesummit-jury.web.app/',
   },
   {
     name: 'SNB Mobile App',
     description: 'Mobile banking app for Saudi National Bank.',
-    logo: 'logos/snb.png',
-    screenshot: 'screenshots/snb.jpg',
+    logo: 'snb.webp',
+    screenshot: 'snb.webp',
   },
   {
     name: 'Lacera Ceramic Studio',
     description: 'Management system for products & orders.',
-    logo: 'logos/lacera.png',
-    screenshot: 'screenshots/lacera.jpg',
+    logo: 'lacera.webp',
+    screenshot: 'lacera.webp',
     link: 'https://lacera.az/',
   },
   {
     name: 'Child Adoption Platform',
     description: 'A platform for child adoption in Azerbaijan.',
-    logo: 'logos/adoption.png',
-    screenshot: 'screenshots/adoption.png',
+    logo: 'adoption.webp',
+    screenshot: 'adoption.webp',
     link: 'https://adoption.mlspp.gov.az/app/',
   },
 ];
@@ -95,7 +95,7 @@ export const Projects = () => {
           custom={index}
         >
           <img
-            src={project.logo}
+            src={`${import.meta.env.BASE_URL}/logos/${project.logo}`}
             alt={project.name}
             className="w-32 h-16 object-left object-contain"
           />
@@ -106,9 +106,9 @@ export const Projects = () => {
           </div>
 
           <motion.img
-            src={project.screenshot}
+            src={`${import.meta.env.BASE_URL}/screenshots/${project.screenshot}`}
             alt={`${project.name} Screenshot`}
-            className="absolute top-0 left-0 w-full h-full object-cover  opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            className="absolute top-0 left-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           />
         </motion.a>
       ))}

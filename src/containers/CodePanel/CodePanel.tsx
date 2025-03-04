@@ -33,7 +33,7 @@ export const CodePanel: FC<SenderProps> = ({ dispatch }) => {
               isActive ? 'bg-(--primary-dark-bg)' : 'bg-(--secondary-bg-2)'
             }
           >
-            <Tab img="images/ts.png" title="Hello.ts" />
+            <Tab img="images/ts.webp" title="Hello.ts" />
           </NavLink>
 
           <NavLink
@@ -42,7 +42,7 @@ export const CodePanel: FC<SenderProps> = ({ dispatch }) => {
               isActive ? 'bg-(--primary-dark-bg)' : 'bg-(--secondary-bg-2)'
             }
           >
-            <Tab img="images/sass.png" title="About.scss" />
+            <Tab img="images/sass.webp" title="About.scss" />
           </NavLink>
         </div>
 

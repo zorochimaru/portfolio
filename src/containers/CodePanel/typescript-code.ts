@@ -19,7 +19,7 @@ export const TS_CODE = `export class FrontendDeveloper {
     }
 
     public ${Method.projects}(): string {
-      return \`console.log("Here are some of my projects! 📝");\`;
+      return \`console.log("Here are some of projects where I've worked! 📝");\`;
     }
 
     public ${Method.softSkills}(): string {

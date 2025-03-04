@@ -16,7 +16,11 @@ export const Introduce = () => {
       className="text-white text-center p-10 my-auto flex flex-col items-center"
     >
       <a href="https://www.linkedin.com/in/rasim-karimli/" target="_blank" className="mb-5">
-        <img src="images/profile.jpg" alt="profile" className="rounded-full w-36 h-36" />
+        <img
+          src={`${import.meta.env.BASE_URL}/images/profile.webp`}
+          alt="profile"
+          className="rounded-full w-36 h-36"
+        />
       </a>
       <a href="https://www.linkedin.com/in/rasim-karimli/" target="_blank">
         <h1 className="text-4xl font-extrabold text-blue-500">Hello, I'm Rasim Karimli!</h1>
@@ -32,7 +36,11 @@ export const Introduce = () => {
       <p className="text-xl mt-6 text-gray-300">Thanks for checking out my portfolio!</p>
 
       <a href="https://www.linkedin.com/in/rasim-karimli/" target="_blank" className="mt-4">
-        <img src="images/linkedin.png" alt="linkedin" style={{ width: '32px' }} />
+        <img
+          src={`${import.meta.env.BASE_URL}/images/linkedin.webp`}
+          alt="linkedin"
+          style={{ width: '32px' }}
+        />
       </a>
     </motion.div>
   );

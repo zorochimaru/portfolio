@@ -58,7 +58,10 @@ export const Stack = () => {
           href={item.url}
           target="_blank"
         >
-          <img className="w-[200px] mx-auto" src={`images/${item.img}.png`} />
+          <img
+            className="w-[200px] mx-auto"
+            src={`${import.meta.env.BASE_URL}/images/${item.img}.webp`}
+          />
         </motion.a>
       ))}
     </motion.div>
