@@ -19,7 +19,7 @@ const codePanelVariants: Variants = {
 
 export const CodePanel: FC<SenderProps> = ({ dispatch }) => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/portfolio">
       <motion.div
         variants={codePanelVariants}
         initial="hidden"

@@ -7,7 +7,7 @@ export const ToolsBar: FC = () => {
   return (
     <div className="tools-bar-wrapper">
       {tools.map((tool) => (
-        <img width={32} height={32} key={tool} src={`/icons/${tool}.svg`} alt="" />
+        <img width={32} height={32} key={tool} src={`icons/${tool}.svg`} alt="" />
       ))}
     </div>
   );
