@@ -1,5 +1,6 @@
 {
-  "name": "react-demo",
+  "name": "portfolio",
+  "homepage": "https://zorochimaru.github.io/portfolio/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,6 +9,8 @@
     "lint:style": "stylelint 'src/**/*.{css}'",
     "lint:style:fix": "stylelint 'src/**/*.{css}' --fix",
     "build": "tsc -b && vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -15,6 +18,7 @@
     "@react-three/fiber": "^9.0.4",
     "@tailwindcss/vite": "^4.0.8",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "gh-pages": "^6.3.0",
     "js-beautify": "^1.15.3",
     "motion": "^12.4.7",
     "prism-react-renderer": "^2.4.1",
