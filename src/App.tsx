@@ -1,5 +1,4 @@
 import { useReducer } from 'react';
-import './App.css';
 import { Title } from './components';
 import { CodePanel, Footer, OutputPanel, Terminal, ToolsBar } from './containers';
 import { Method } from './enums';
