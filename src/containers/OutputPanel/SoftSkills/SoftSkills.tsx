@@ -43,8 +43,8 @@ const Rex: FC<{
 };
 
 export const SoftSkills = () => {
-  const gltf = useGLTF(`${import.meta.env.BASE_URL}/models/rex.glb`);
-  const [activeSkill, setActiveSkill] = useState<(typeof softSkills)[number]>(softSkills[0]);
+  const gltf = useGLTF(`https://pub-4b5fac57f5074023bb9e348919bf61f4.r2.dev/rex.glb`);
+  const [activeSkill, setActiveSkill] = useState<(typeof softSkills)[number]>('🎨 Creativity');
 
   return (
     <div className="flex flex-col text-center gap-4 py-6 h-full">
