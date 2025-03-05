@@ -2,6 +2,7 @@ import beautify from 'js-beautify';
 import { Highlight, themes } from 'prism-react-renderer';
 import React, { FC } from 'react';
 import { Method } from '../../../enums';
+import { useTerminalCommandContext } from '../../../HOC';
 import { TS_CODE } from '../typescript-code';
 interface SenderProps {
   dispatch: (action: { type: string; payload: Method }) => void;
@@ -23,7 +24,11 @@ const getClassMethods = (code: string): string[] => {
 const classMethods = getClassMethods(code);
 
 export const HighlightPage: FC<SenderProps> = ({ dispatch }) => {
+  const { resetAndSetCommand } = useTerminalCommandContext();
+
   const runMethod: React.MouseEventHandler<HTMLSpanElement> = (item) => {
+    resetAndSetCommand(`Running method: "${item.currentTarget.textContent}"`);
+
     if (item.currentTarget.classList.contains('method')) {
       dispatch({
         type: 'RUN_METHOD',

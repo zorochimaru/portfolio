@@ -23,7 +23,7 @@ export const Introduce = () => {
         />
       </a>
       <a href="https://www.linkedin.com/in/rasim-karimli/" target="_blank">
-        <h1 className="text-4xl font-extrabold text-blue-500">Hello, I'm Rasim Karimli!</h1>
+        <h1 className="text-2xl font-extrabold text-blue-500">Hello, I'm Rasim Karimli!</h1>
       </a>
       <p className="text-xl mt-6 text-gray-300">
         I'm a full-stack developer with a passion for building web applications.

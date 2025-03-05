@@ -2,6 +2,7 @@ import { useReducer } from 'react';
 import { Title } from './components';
 import { CodePanel, Footer, OutputPanel, Terminal, ToolsBar } from './containers';
 import { Method } from './enums';
+import { TerminalCommandProvider } from './HOC';
 
 interface State {
   message: Method;
@@ -22,19 +23,21 @@ const App = () => {
   return (
     <div className="flex flex-col h-screen overflow-hidden">
       <Title />
-      <main className="flex flex-1 min-h-0 ">
-        <ToolsBar />
-        <div className="flex flex-1 flex-col">
-          <div className="flex flex-3 overflow-hidden">
-            <CodePanel dispatch={dispatch} />
+      <TerminalCommandProvider>
+        <main className="flex flex-1 min-h-0 ">
+          <ToolsBar />
+          <div className="flex flex-1 flex-col">
+            <div className="flex flex-3 overflow-hidden">
+              <CodePanel dispatch={dispatch} />
 
-            <OutputPanel message={state.message} />
+              <OutputPanel message={state.message} />
+            </div>
+
+            <Terminal />
           </div>
-
-          <Terminal />
-        </div>
-      </main>
-      <Footer />
+        </main>
+        <Footer />
+      </TerminalCommandProvider>
     </div>
   );
 };

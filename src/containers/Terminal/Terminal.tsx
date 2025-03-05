@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { FC, useRef, useState } from 'react';
+import { useTerminalCommandContext } from '../../HOC';
 
 const text = 'Click on method names to see output 👆👆👆';
 
@@ -13,6 +14,8 @@ const terminalVariants = {
 };
 
 export const Terminal: FC = () => {
+  const { command } = useTerminalCommandContext();
+
   const minHeight = 100;
   const maxHeight = 300;
   const [height, setHeight] = useState(150);
@@ -70,6 +73,19 @@ export const Terminal: FC = () => {
           </motion.span>
         ))}
       </div>
+      <p>
+        <span style={{ marginRight: '10px' }}>$</span>
+        {command.split('').map((char, index) => (
+          <motion.span
+            key={index}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.05 }}
+          >
+            {char}
+          </motion.span>
+        ))}
+      </p>
     </motion.div>
   );
 };
