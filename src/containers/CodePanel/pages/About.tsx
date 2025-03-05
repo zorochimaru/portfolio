@@ -13,7 +13,7 @@ export const Background: FC<{
 };
 
 export const About = () => {
-  const gltf = useGLTF(`${import.meta.env.BASE_URL}/models/stars.glb`);
+  const gltf = useGLTF(`https://pub-4b5fac57f5074023bb9e348919bf61f4.r2.dev/stars.glb`);
 
   return (
     <>
