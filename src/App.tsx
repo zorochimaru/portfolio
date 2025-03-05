@@ -18,6 +18,7 @@ const reducer = (state: State, action: { type: string; payload: Method }): State
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, { message: Method.introduce });
+
   return (
     <div className="flex flex-col h-screen overflow-hidden">
       <Title />

@@ -1,4 +1,7 @@
-import { Variants, motion } from 'motion/react';
+import { Variants } from 'motion/react';
+import * as motion from 'motion/react-client';
+import { Loading } from '../../../components';
+import { usePreloadImages } from '../../../hooks';
 
 const stackList = [
   { img: 'angular', url: 'https://angular.io/' },
@@ -44,26 +47,36 @@ const variants: Variants = {
 };
 
 export const Stack = () => {
+  const loaded = usePreloadImages(
+    stackList.map((item) => `${import.meta.env.BASE_URL}/images/${item.img}.webp`),
+  );
+
   return (
-    <motion.div variants={list} className="grid grid-cols-2 gap-10 p-4 items-center">
-      {stackList.map((item, index) => (
-        <motion.a
-          key={item.img}
-          variants={variants}
-          initial="hidden"
-          animate="visible"
-          whileTap="tap"
-          whileHover="hover"
-          custom={index}
-          href={item.url}
-          target="_blank"
-        >
-          <img
-            className="w-[200px] mx-auto"
-            src={`${import.meta.env.BASE_URL}/images/${item.img}.webp`}
-          />
-        </motion.a>
-      ))}
-    </motion.div>
+    <>
+      {loaded ? (
+        <motion.div variants={list} className="grid grid-cols-2 gap-10 p-4 items-center">
+          {stackList.map((item, index) => (
+            <motion.a
+              key={item.img}
+              variants={variants}
+              initial="hidden"
+              animate="visible"
+              whileTap="tap"
+              whileHover="hover"
+              custom={index}
+              href={item.url}
+              target="_blank"
+            >
+              <img
+                className="w-[200px] mx-auto"
+                src={`${import.meta.env.BASE_URL}/images/${item.img}.webp`}
+              />
+            </motion.a>
+          ))}
+        </motion.div>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
 };
