@@ -37,6 +37,7 @@ const Rex: FC<{
   return (
     <>
       <ambientLight />
+      <directionalLight color="red" intensity={1} position={[5, 5, 5]} />
       <primitive object={gltf.scene} position={[3, -2, -1.5]} rotation-y={-1.2} />
     </>
   );
@@ -53,7 +54,7 @@ export const SoftSkills = () => {
           <motion.li
             key={skill}
             onClick={() => setActiveSkill(skill)}
-            className="p-2 px-4 rounded-lg bg-gray-800 text-white shadow-md cursor-pointer"
+            className={`p-2 px-4 rounded-lg active:bg-gray-700 hover:bg-gray-600 text-white shadow-md cursor-pointer ${activeSkill === skill ? 'bg-blue-500' : 'bg-gray-800'}`}
             variants={variants}
             initial="hidden"
             animate="visible"
@@ -65,7 +66,13 @@ export const SoftSkills = () => {
           </motion.li>
         ))}
       </ul>
-      <div className="justify-self-stretch h-full">
+      <motion.div
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+        custom={softSkills.length}
+        className="justify-self-stretch h-full"
+      >
         {activeSkill === '🗣️ Communication' && (
           <img
             className="w-full object-contain  px-6"
@@ -113,7 +120,7 @@ export const SoftSkills = () => {
             <Rex gltf={gltf} />
           </Canvas>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };
