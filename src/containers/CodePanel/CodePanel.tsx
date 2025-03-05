@@ -24,7 +24,7 @@ export const CodePanel: FC<SenderProps> = ({ dispatch }) => {
         variants={codePanelVariants}
         initial="hidden"
         animate="visible"
-        className="editor-wrapper bg-(--dark-bg2) overflow-y-auto"
+        className="editor-wrapper bg-(--dark-bg2)"
       >
         <div className="flex">
           <NavLink

@@ -17,7 +17,7 @@ export const About = () => {
 
   return (
     <>
-      <div className="relative h-full flex bg-(--primary-dark-bg)">
+      <div className="relative h-full flex bg-(--primary-dark-bg) overflow-y-auto scrollbar">
         <div className="absolute inset-0">
           <Canvas>
             <Background gltf={gltf} />

@@ -25,3 +25,25 @@ body {
 .token .function {
   cursor: pointer !important;
 }
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 20px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: var(--dark-bg2);
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: var(--primary-dark-bg);
+    border-radius: 100vh;
+    border: 3px solid var(--primary-bg);
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-bg);
+  }
+}

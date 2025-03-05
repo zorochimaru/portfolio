@@ -35,7 +35,7 @@ export const HighlightPage: FC<SenderProps> = ({ dispatch }) => {
   return (
     <Highlight theme={themes.vsDark} code={code} language="ts">
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={style}>
+        <pre className={`${className} overflow-y-auto scrollbar`} style={style}>
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ line })}>
               <span style={{ marginRight: '16px', userSelect: 'none' }}>{i + 1}</span>

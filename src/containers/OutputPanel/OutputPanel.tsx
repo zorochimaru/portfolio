@@ -27,7 +27,7 @@ export const OutputPanel: FC<{ message: Method }> = ({ message }) => {
       <div className="flex bg-(--dark-bg2)">
         <Tab title="Output" />
       </div>
-      <div className="container">
+      <div className="container overflow-y-auto scrollbar">
         <Suspense fallback={<Loading />}>
           <AnimatePresence mode="popLayout">
             {message === Method.introduce && <Introduce />}
