@@ -8,7 +8,6 @@ const softSkills = [
   '🗣️ Communication',
   '🧩 Problem-Solving',
   '⏰ Time Management',
-  '🔄 Adaptability',
   '🤝 Teamwork',
   '🧠 Critical Thinking',
   '🎨 Creativity',
@@ -91,13 +90,6 @@ export const SoftSkills = () => {
           <img
             className="w-full object-contain  px-6"
             src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWw1OGlxYmw0c2xtZnFjNzZuaG96MWtuNHpxa3I2bGl0dnJlaW5xMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BN2IEmYKDuA9FHXIaU/giphy.gif"
-            alt=""
-          />
-        )}
-        {activeSkill === '🔄 Adaptability' && (
-          <img
-            className="w-full object-contain  px-6"
-            src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTE5aWs5emh3ZGJ5OHNyOWN2NTB4eHo1cnFjdTZrdnpwZDd3NGZnNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l4Epa600oZezUsAxO/giphy.gif"
             alt=""
           />
         )}
