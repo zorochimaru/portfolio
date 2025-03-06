@@ -25,11 +25,60 @@ body {
 .token .function {
   cursor: pointer !important;
 }
+@keyframes glow {
+  0% {
+    text-shadow:
+      0 0 2px rgba(179, 179, 179, 0.514),
+      0 0 4px rgba(179, 179, 179, 0.514),
+      0 0 6px rgba(179, 179, 179, 0.514),
+      0 0 8px rgba(179, 179, 179, 0.514),
+      0 0 10px rgba(179, 179, 179, 0.514),
+      0 0 12px rgba(179, 179, 179, 0.514),
+      0 0 14px rgba(179, 179, 179, 0.514),
+      0 0 16px rgba(179, 179, 179, 0.514);
+  }
+  50% {
+    text-shadow:
+      0 0 4px rgba(179, 179, 179, 0.514),
+      0 0 8px rgba(179, 179, 179, 0.514),
+      0 0 12px rgba(179, 179, 179, 0.514),
+      0 0 16px rgba(179, 179, 179, 0.514),
+      0 0 20px rgba(179, 179, 179, 0.514),
+      0 0 24px rgba(179, 179, 179, 0.514),
+      0 0 28px rgba(179, 179, 179, 0.514),
+      0 0 32px rgba(179, 179, 179, 0.514);
+  }
+  100% {
+    text-shadow:
+      0 0 2px rgba(179, 179, 179, 0.514),
+      0 0 4px rgba(179, 179, 179, 0.514),
+      0 0 6px rgba(179, 179, 179, 0.514),
+      0 0 8px rgba(179, 179, 179, 0.514),
+      0 0 10px rgba(179, 179, 179, 0.514),
+      0 0 12px rgba(179, 179, 179, 0.514),
+      0 0 14px rgba(179, 179, 179, 0.514),
+      0 0 16px rgba(179, 179, 179, 0.514);
+  }
+}
+
+.active-method {
+  text-shadow:
+    0 0 2px rgba(179, 179, 179, 0.514),
+    0 0 4px rgba(179, 179, 179, 0.514),
+    0 0 6px rgba(179, 179, 179, 0.514),
+    0 0 8px rgba(179, 179, 179, 0.514),
+    0 0 10px rgba(179, 179, 179, 0.514),
+    0 0 12px rgba(179, 179, 179, 0.514),
+    0 0 14px rgba(179, 179, 179, 0.514),
+    0 0 16px rgba(179, 179, 179, 0.514);
+
+  animation: glow 1s infinite linear;
+}
 
 @layer utilities {
   .scrollbar::-webkit-scrollbar {
     width: 10px;
-    height: 20px;
+    height: 10px;
   }
 
   .scrollbar::-webkit-scrollbar-track {

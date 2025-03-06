@@ -20,7 +20,8 @@ export const About = () => {
       <div className="relative h-full flex bg-(--primary-dark-bg) overflow-y-auto scrollbar">
         <div className="absolute inset-0">
           <Canvas>
-            <Background gltf={gltf} />
+            {gltf && <Background gltf={gltf} />}
+
             <OrbitControls
               enableZoom={false}
               enablePan={false}

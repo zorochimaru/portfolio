@@ -1,6 +1,6 @@
 import { useAnimations, useGLTF } from '@react-three/drei';
 import { Canvas, ObjectMap } from '@react-three/fiber';
-import { motion, Variants } from 'motion/react';
+import { AnimatePresence, motion, Variants } from 'motion/react';
 import { FC, useEffect, useState } from 'react';
 import { GLTF } from 'three-stdlib';
 
@@ -19,8 +19,13 @@ const variants: Variants = {
     opacity: 1,
     transition: { delay: index * 0.3 },
   }),
-  tap: { scale: 0.8 },
-  hover: { scale: 1.2 },
+  tap: { scale: 0.95 },
+  hover: { scale: 1.05 },
+};
+
+const skillsVariants: Variants = {
+  hidden: { opacity: 0, x: 20 },
+  visible: { opacity: 1, x: 0, transition: { duration: 1 } },
 };
 
 const Rex: FC<{
@@ -44,16 +49,16 @@ const Rex: FC<{
 
 export const SoftSkills = () => {
   const gltf = useGLTF(`https://pub-4b5fac57f5074023bb9e348919bf61f4.r2.dev/rex.glb`);
-  const [activeSkill, setActiveSkill] = useState<(typeof softSkills)[number]>('🎨 Creativity');
+  const [activeSkill, setActiveSkill] = useState<(typeof softSkills)[number]>('🗣️ Communication');
 
   return (
     <div className="flex flex-col text-center gap-4 py-6 h-full">
-      <ul className="flex flex-col gap-3 px-6">
+      <div className="flex gap-3 px-10 flex-wrap items-center basis-[100px]">
         {softSkills.map((skill, index) => (
-          <motion.li
+          <motion.button
             key={skill}
             onClick={() => setActiveSkill(skill)}
-            className={`p-2 px-4 rounded-lg active:bg-gray-700 hover:bg-gray-600 text-white shadow-md cursor-pointer ${activeSkill === skill ? 'bg-blue-500' : 'bg-gray-800'}`}
+            className={`p-2 px-4 rounded-lg active:bg-gray-700 hover:bg-gray-600 text-white whitespace-nowrap shadow-md cursor-pointer ${activeSkill === skill ? 'bg-blue-500' : 'bg-gray-800'}`}
             variants={variants}
             initial="hidden"
             animate="visible"
@@ -62,57 +67,124 @@ export const SoftSkills = () => {
             custom={index}
           >
             {skill}
-          </motion.li>
+          </motion.button>
         ))}
-      </ul>
-      <motion.div
-        variants={variants}
-        initial="hidden"
-        animate="visible"
-        custom={softSkills.length}
-        className="justify-self-stretch h-full"
-      >
-        {activeSkill === '🗣️ Communication' && (
-          <img
-            className="w-full object-contain  px-6"
-            src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXJlcDVldmw0ZmRodWljY2p6cHpxOHBod2JmajJyaG92cWtuZ2VxaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0MYNnQhGGs4CxtYI/giphy.gif"
-            alt=""
-          />
-        )}
-        {activeSkill === '🧩 Problem-Solving' && (
-          <img
-            className="w-full object-contain  px-6"
-            src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjdwNWVjZmV1N2JuY2g5Z2tzdGxlYjhxeGV4ZXl6ZTVndXJpbnVoMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UKkes2qN2T70s/giphy.gif"
-            alt=""
-          />
-        )}
-        {activeSkill === '⏰ Time Management' && (
-          <img
-            className="w-full object-contain  px-6"
-            src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWw1OGlxYmw0c2xtZnFjNzZuaG96MWtuNHpxa3I2bGl0dnJlaW5xMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BN2IEmYKDuA9FHXIaU/giphy.gif"
-            alt=""
-          />
-        )}
-        {activeSkill === '🤝 Teamwork' && (
-          <img
-            className="w-full object-contain  px-6"
-            src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZndoenJsb2g4OGk4YThiODAxZWR2dnF0cWJoMWVoMmZnN2ZrdTVteSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/69C0SN1hBWPxomo86v/giphy.gif"
-            alt=""
-          />
-        )}
-        {activeSkill === '🧠 Critical Thinking' && (
-          <img
-            className="w-full object-contain  px-6"
-            src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXBlZmttdmd6emxrMXloMHc2cnhiMmZpNDBiMzhnMDdnODMwdWRuNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ohdY5OaQmUmVW/giphy.gif"
-            alt=""
-          />
-        )}
+      </div>
+      <div className="justify-self-stretch flex flex-col flex-1">
+        <AnimatePresence mode="popLayout">
+          {activeSkill === '🗣️ Communication' && (
+            <motion.div
+              variants={skillsVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              className="w-full flex flex-col  px-6"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}/images/communication.svg`}
+                className="max-h-[400px] object-contain"
+                alt=""
+              />
+              <p className="mt-4 text-lg">
+                I'm a strong communicator, able to effectively convey my ideas and thoughts to
+                others.
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence mode="popLayout">
+          {activeSkill === '🧩 Problem-Solving' && (
+            <motion.div
+              variants={skillsVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              className="w-full flex flex-col  px-6"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}/images/problem-solving.svg`}
+                className="max-h-[400px] object-contain"
+                alt=""
+              />
+              <p className="mt-4 text-lg">
+                I'm a creative problem solver, able to think outside the box to find solutions.
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence mode="popLayout">
+          {activeSkill === '⏰ Time Management' && (
+            <motion.div
+              variants={skillsVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              className="w-full flex flex-col  px-6"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}/images/time.svg`}
+                className="max-h-[400px] object-contain"
+                alt=""
+              />
+              <p className="mt-4 text-lg">
+                I'm a strong communicator, able to effectively convey my ideas and thoughts to
+                others.
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence mode="popLayout">
+          {activeSkill === '🤝 Teamwork' && (
+            <motion.div
+              variants={skillsVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              className="w-full flex flex-col  px-6"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}/images/team.svg`}
+                className="max-h-[400px] object-contain"
+                alt=""
+              />
+              <p className="mt-4 text-lg">
+                I'm a strong communicator, able to effectively convey my ideas and thoughts to
+                others.
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence mode="popLayout">
+          {activeSkill === '🧠 Critical Thinking' && (
+            <motion.div
+              variants={skillsVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              className="w-full flex flex-col  px-6"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}/images/think.svg`}
+                className="max-h-[400px] object-contain"
+                alt=""
+              />
+              <p className="mt-4 text-lg">
+                I'm a strong communicator, able to effectively convey my ideas and thoughts to
+                others.
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {activeSkill === '🎨 Creativity' && (
-          <Canvas>
-            <Rex gltf={gltf} />
-          </Canvas>
+          <>
+            <h3 className="text-2xl mt-4">JUST LOOK AT THIS DINOSAUR!!!</h3>
+            <Canvas>
+              <Rex gltf={gltf} />
+            </Canvas>
+          </>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 };

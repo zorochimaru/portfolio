@@ -1,6 +1,6 @@
 import { AnimatePresence, Variants } from 'motion/react';
 import * as motion from 'motion/react-client';
-import { FC, Suspense } from 'react';
+import { FC, Suspense, useEffect, useRef } from 'react';
 import { Loading, Tab } from '../../components';
 import { Method } from '../../enums';
 
@@ -17,14 +17,49 @@ const outputPanelVariants: Variants = {
 };
 
 export const OutputPanel: FC<{ message: Method }> = ({ message }) => {
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const panel = panelRef.current;
+    const handle = panel?.querySelector('.resize-handle');
+
+    const onMouseDown = (e: MouseEvent) => {
+      const startX = e.clientX;
+      const startWidth = panel?.offsetWidth || 0;
+
+      const onMouseMove = (e: MouseEvent) => {
+        if (panel) {
+          const newWidth = startWidth - (e.clientX - startX);
+          panel.style.width = `${newWidth}px`;
+        }
+      };
+
+      const onMouseUp = () => {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+      };
+
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+    };
+
+    handle?.addEventListener('mousedown', onMouseDown as EventListener);
+
+    return () => {
+      handle?.removeEventListener('mousedown', onMouseDown as EventListener);
+    };
+  }, []);
+
   return (
     <motion.div
+      ref={panelRef}
       variants={outputPanelVariants}
       initial="hidden"
       animate="visible"
-      className="border-s-1 border-gray-600 flex-1"
+      className="w-1/3 relative"
     >
-      <div className="flex bg-(--dark-bg2)">
+      <div className="resize-handle absolute border-3 border-gray-600 left-0 top-0 bottom-0  cursor-ew-resize bg-transparent"></div>
+      <div className="flex bg-dark-bg2">
         <Tab title="Output" />
       </div>
       <div className="container overflow-y-auto scrollbar">
