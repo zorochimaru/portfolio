@@ -1,10 +1,9 @@
 import { FC, useState } from 'react';
 import { useTerminalCommandContext } from '../../HOC';
-import './ToolsBar.css';
 
 const tools = ['explore', 'search', 'git', 'debugger'];
 
-const lofiAudio = new Audio(`https://pub-4b5fac57f5074023bb9e348919bf61f4.r2.dev/lofi.mp3`);
+const lofiAudio = new Audio(`https://streams.fluxfm.de/Chillhop/mp3-128/streams.fluxfm.de/`);
 
 export const ToolsBar: FC = () => {
   const [paused, setPaused] = useState(true);
@@ -13,17 +12,17 @@ export const ToolsBar: FC = () => {
   const togglePlayer = () => {
     if (lofiAudio.paused) {
       lofiAudio.play();
-      resetAndSetCommand('playing lofi 🎙️');
+      resetAndSetCommand('playing chill music 🎙️');
       setPaused(false);
     } else {
       lofiAudio.pause();
-      resetAndSetCommand('paused lofi ⏸️');
+      resetAndSetCommand('paused ⏸️');
       setPaused(true);
     }
   };
 
   return (
-    <div className="tools-bar-wrapper">
+    <div className="flex items-center flex-col shrink-0 gap-6 py-6 w-12 bg-[var(--secondary-bg-2)]">
       {tools.map((tool) => (
         <img
           width={32}
