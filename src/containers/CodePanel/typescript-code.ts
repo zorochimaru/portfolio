@@ -2,7 +2,7 @@ import { Method } from '../../enums';
 
 export const TS_CODE = `export class FrontendDeveloper {
     public fullName = "Rasim Karimli";
-    public birthDate = new Date(1993, 11, 20);
+    public birthDate = new Date(1993, 11, 20); // December in JavaScript is 11
     private hobbies = ["Video Games🎮", "Music🎸", "Anime🍿"];
 
     public ${Method.introduce}(): string {
