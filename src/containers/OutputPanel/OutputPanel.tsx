@@ -4,9 +4,9 @@ import { FC, useEffect, useRef } from 'react';
 import { Tab } from '../../components';
 import { Method } from '../../enums';
 
+import { useIsMobile } from '../../hooks';
 import { CalculateExperience } from './CalculateExperience/CalculateExperience';
 import { Introduce } from './Introduce/Introduce';
-import './OutputPanel.css';
 import { Projects } from './Projects/Projects';
 import { SoftSkills } from './SoftSkills/SoftSkills';
 import { Stack } from './Stack/Stack';
@@ -18,6 +18,7 @@ const outputPanelVariants: Variants = {
 
 export const OutputPanel: FC<{ message: Method }> = ({ message }) => {
   const panelRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const panel = panelRef.current;
@@ -66,26 +67,30 @@ export const OutputPanel: FC<{ message: Method }> = ({ message }) => {
       animate="visible"
       className="relative w-full lg:w-1/3"
     >
-      <div className="resize-handle absolute border-3 border-gray-600 left-0 top-0 bottom-0  cursor-ew-resize bg-transparent"></div>
-      <div className="flex bg-dark-bg2">
+      <div className="resize-handle absolute border-3 border-gray-600 -left-1 top-0 bottom-0  cursor-ew-resize bg-transparent"></div>
+      <div className="hidden lg:flex bg-dark-bg2">
         <Tab title="Output" />
       </div>
-      <div className="hidden output-container lg:flex lg:justify-center lg:flex-col gap-10">
-        <AnimatePresence mode="popLayout">
-          {message === Method.introduce && <Introduce />}
-          {message === Method.showStack && <Stack />}
-          {message === Method.calculateExperience && <CalculateExperience />}
-          {message === Method.projects && <Projects />}
-          {message === Method.softSkills && <SoftSkills />}
-        </AnimatePresence>
-      </div>
-      <div className="output-container lg:hidden flex flex-col gap-10 overflow-y-auto overflow-x-hidden scrollbar">
-        <Introduce />
-        <Stack />
-        <CalculateExperience />
-        <Projects />
-        <SoftSkills />
-      </div>
+
+      {isMobile ? (
+        <div className="h-full flex flex-col gap-10 overflow-y-auto overflow-x-hidden scrollbar">
+          <Introduce />
+          <Stack />
+          <CalculateExperience />
+          <Projects />
+          <SoftSkills />
+        </div>
+      ) : (
+        <div className="h-[calc(100%-40px)] flex lg:justify-center flex-col gap-10">
+          <AnimatePresence mode="popLayout">
+            {message === Method.introduce && <Introduce />}
+            {message === Method.showStack && <Stack />}
+            {message === Method.calculateExperience && <CalculateExperience />}
+            {message === Method.projects && <Projects />}
+            {message === Method.softSkills && <SoftSkills />}
+          </AnimatePresence>
+        </div>
+      )}
     </motion.div>
   );
 };

@@ -71,10 +71,10 @@ const projects: Project[] = [
 ];
 
 const variants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, x: 20 },
   visible: (index) => ({
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: { delay: index * 0.3, duration: 0.6 },
   }),
   tap: { scale: 0.8 },

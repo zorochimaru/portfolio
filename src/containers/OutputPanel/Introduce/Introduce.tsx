@@ -20,11 +20,11 @@ export const Introduce = () => {
           <img
             src={`${import.meta.env.BASE_URL}/images/profile.webp`}
             alt="profile"
-            className="rounded-full max-w-72 max-h-72 object-cover"
+            className="rounded-full max-w-42 max-h-42 md:max-w-72 md:max-h-72 object-cover"
           />
         </a>
         <a href="https://www.linkedin.com/in/rasim-karimli/" target="_blank">
-          <h1 className="text-7xl font-bold text-cyan-300 text-center uppercase font-[Oswald]">
+          <h1 className="text-5xl md:text-7xl font-bold text-cyan-300 text-center uppercase font-[Oswald]">
             Hi, I'm Rasim Karimli!
           </h1>
         </a>

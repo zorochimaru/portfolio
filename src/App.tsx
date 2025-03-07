@@ -4,6 +4,7 @@ import { Title } from './components';
 import { CodePanel, Footer, OutputPanel, Terminal, ToolsBar } from './containers';
 import { Method } from './enums';
 import { TerminalCommandProvider } from './HOC';
+import { useIsMobile } from './hooks';
 interface State {
   message: Method;
 }
@@ -17,11 +18,13 @@ const reducer = (state: State, action: { type: string; payload: Method }): State
   }
 };
 
-useGLTF.preload(`https://pub-4b5fac57f5074023bb9e348919bf61f4.r2.dev/stars.glb`);
-useGLTF.preload(`https://pub-4b5fac57f5074023bb9e348919bf61f4.r2.dev/rex.glb`);
-
 const App = () => {
   const [state, dispatch] = useReducer(reducer, { message: Method.introduce });
+  const isMobile = useIsMobile();
+
+  if (!isMobile) {
+    useGLTF.preload(`https://pub-4b5fac57f5074023bb9e348919bf61f4.r2.dev/stars.glb`);
+  }
 
   return (
     <div className="flex flex-col h-screen overflow-hidden">
@@ -36,7 +39,7 @@ const App = () => {
               <OutputPanel message={state.message} />
             </div>
 
-            <Terminal />
+            {!isMobile && <Terminal />}
           </div>
         </main>
         <Footer />
