@@ -1,6 +1,6 @@
 import { AnimatePresence, Variants } from 'motion/react';
 import * as motion from 'motion/react-client';
-import { FC, Suspense, useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { Tab } from '../../components';
 import { Method } from '../../enums';
 
@@ -64,22 +64,27 @@ export const OutputPanel: FC<{ message: Method }> = ({ message }) => {
       variants={outputPanelVariants}
       initial="hidden"
       animate="visible"
-      className="w-1/3 relative"
+      className="relative w-full lg:w-1/3"
     >
       <div className="resize-handle absolute border-3 border-gray-600 left-0 top-0 bottom-0  cursor-ew-resize bg-transparent"></div>
       <div className="flex bg-dark-bg2">
         <Tab title="Output" />
       </div>
-      <div className="container">
-        <Suspense>
-          <AnimatePresence mode="popLayout">
-            {message === Method.introduce && <Introduce />}
-            {message === Method.showStack && <Stack />}
-            {message === Method.calculateExperience && <CalculateExperience />}
-            {message === Method.projects && <Projects />}
-            {message === Method.softSkills && <SoftSkills />}
-          </AnimatePresence>
-        </Suspense>
+      <div className="hidden output-container lg:flex lg:justify-center lg:flex-col gap-10">
+        <AnimatePresence mode="popLayout">
+          {message === Method.introduce && <Introduce />}
+          {message === Method.showStack && <Stack />}
+          {message === Method.calculateExperience && <CalculateExperience />}
+          {message === Method.projects && <Projects />}
+          {message === Method.softSkills && <SoftSkills />}
+        </AnimatePresence>
+      </div>
+      <div className="output-container lg:hidden flex flex-col gap-10 overflow-y-auto overflow-x-hidden scrollbar">
+        <Introduce />
+        <Stack />
+        <CalculateExperience />
+        <Projects />
+        <SoftSkills />
       </div>
     </motion.div>
   );

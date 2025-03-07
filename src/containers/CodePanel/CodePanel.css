@@ -1,9 +1,4 @@
 .editor-wrapper {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-
   .prism-code {
     flex: 1;
     padding: 16px;

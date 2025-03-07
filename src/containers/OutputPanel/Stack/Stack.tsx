@@ -54,29 +54,34 @@ export const Stack = () => {
   return (
     <>
       {loaded ? (
-        <motion.div
-          variants={list}
-          className="grid grid-cols-2 gap-10 p-4 items-center overflow-y-auto overflow-x-hidden scrollbar"
-        >
-          {stackList.map((item, index) => (
-            <motion.a
-              key={item.img}
-              variants={variants}
-              initial="hidden"
-              animate="visible"
-              whileTap="tap"
-              whileHover="hover"
-              custom={index}
-              href={item.url}
-              target="_blank"
-            >
-              <img
-                className="w-[200px] mx-auto"
-                src={`${import.meta.env.BASE_URL}/images/${item.img}.webp`}
-              />
-            </motion.a>
-          ))}
-        </motion.div>
+        <>
+          <h2 className="lg:hidden text-7xl font-bold text-cyan-300 text-center uppercase font-[Oswald]">
+            My Stack
+          </h2>
+          <motion.div
+            variants={list}
+            className="grid grid-cols-2 gap-10 p-4 items-center lg:overflow-y-auto lg:overflow-x-hidden scrollbar"
+          >
+            {stackList.map((item, index) => (
+              <motion.a
+                key={item.img}
+                variants={variants}
+                initial="hidden"
+                animate="visible"
+                whileTap="tap"
+                whileHover="hover"
+                custom={index}
+                href={item.url}
+                target="_blank"
+              >
+                <img
+                  className="w-[200px] mx-auto"
+                  src={`${import.meta.env.BASE_URL}/images/${item.img}.webp`}
+                />
+              </motion.a>
+            ))}
+          </motion.div>
+        </>
       ) : (
         <Loading />
       )}

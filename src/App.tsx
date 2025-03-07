@@ -31,7 +31,7 @@ const App = () => {
           <ToolsBar />
           <div className="flex flex-1 flex-col">
             <div className="flex flex-3 overflow-hidden">
-              <CodePanel dispatch={dispatch} />
+              <CodePanel message={state.message} dispatch={dispatch} />
 
               <OutputPanel message={state.message} />
             </div>

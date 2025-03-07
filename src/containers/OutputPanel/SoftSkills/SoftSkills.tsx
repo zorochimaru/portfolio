@@ -49,25 +49,30 @@ export const SoftSkills = () => {
   const gltf = useGLTF(`https://pub-4b5fac57f5074023bb9e348919bf61f4.r2.dev/rex.glb`);
 
   return (
-    <div className="soft-skills-container overflow-y-auto overflow-x-hidden scrollbar">
-      {softSkills.map((image) =>
-        image.fileName ? (
-          <Image key={image.name} name={image.name} fileName={image.fileName} />
-        ) : (
-          <section key="dinosaur" className="skill-container relative">
-            <h2 className="absolute top-0 2xl:top-1/7 z-10 left-4 text-9xl font-bold text-cyan-300 uppercase font-[Oswald]">
-              look at <br />
-              this <br />
-            </h2>
-            <h2 className="absolute 2xl:top-1/2 left-4 text-5xl 2xl:text-7xl font-bold text-cyan-300 uppercase font-[Oswald]">
-              dinosaur🦖
-            </h2>
-            <Canvas>
-              <Rex gltf={gltf} />
-            </Canvas>
-          </section>
-        ),
-      )}
-    </div>
+    <>
+      <h2 className="lg:hidden text-7xl font-bold text-cyan-300 text-center uppercase font-[Oswald]">
+        Soft Skills
+      </h2>
+      <div className="soft-skills-container lg:overflow-y-auto lg:overflow-x-hidden scrollbar">
+        {softSkills.map((image) =>
+          image.fileName ? (
+            <Image key={image.name} name={image.name} fileName={image.fileName} />
+          ) : (
+            <section key="dinosaur" className="skill-container relative">
+              <h2 className="absolute top-0 2xl:top-1/7 z-10 left-4 text-9xl font-bold text-cyan-300 uppercase font-[Oswald]">
+                look at <br />
+                this <br />
+              </h2>
+              <h2 className="absolute 2xl:top-1/2 left-4 text-5xl 2xl:text-7xl font-bold text-cyan-300 uppercase font-[Oswald]">
+                dinosaur🦖
+              </h2>
+              <Canvas>
+                <Rex gltf={gltf} />
+              </Canvas>
+            </section>
+          ),
+        )}
+      </div>
+    </>
   );
 };

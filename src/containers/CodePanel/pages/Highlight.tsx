@@ -7,6 +7,7 @@ import { TS_CODE } from '../typescript-code';
 
 interface SenderProps {
   dispatch: (action: { type: string; payload: Method }) => void;
+  message: Method;
 }
 
 const code = beautify(TS_CODE);
@@ -24,9 +25,9 @@ const getClassMethods = (code: string): string[] => {
 
 const classMethods = getClassMethods(code);
 
-export const HighlightPage: FC<SenderProps> = ({ dispatch }) => {
+export const HighlightPage: FC<SenderProps> = ({ dispatch, message }) => {
   const { resetAndSetCommand } = useTerminalCommandContext();
-  const [activeMethod, setActiveMethod] = useState<string | null>(Method.introduce);
+  const [activeMethod, setActiveMethod] = useState<string | null>(message);
 
   const runMethod: React.MouseEventHandler<HTMLSpanElement> = (item) => {
     const methodName = item.currentTarget.textContent;

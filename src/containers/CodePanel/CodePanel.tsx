@@ -9,6 +9,7 @@ import { About } from './pages/About';
 import { HighlightPage } from './pages/Highlight';
 
 interface SenderProps {
+  message: Method;
   dispatch: (action: { type: string; payload: Method }) => void;
 }
 
@@ -17,15 +18,15 @@ const codePanelVariants: Variants = {
   visible: { opacity: 1, translateX: 0, transition: { duration: 0.3 } },
 };
 
-export const CodePanel: FC<SenderProps> = ({ dispatch }) => {
+export const CodePanel: FC<SenderProps> = ({ dispatch, message }) => {
   return (
-    <BrowserRouter basename="/portfolio">
-      <motion.div
-        variants={codePanelVariants}
-        initial="hidden"
-        animate="visible"
-        className="editor-wrapper bg-(--dark-bg2)"
-      >
+    <motion.div
+      variants={codePanelVariants}
+      initial="hidden"
+      animate="visible"
+      className="editor-wrapper flex-2 flex-col shrink-0 bg-(--dark-bg2) hidden lg:flex"
+    >
+      <BrowserRouter basename="/portfolio">
         <div className="flex">
           <NavLink
             to={routes.root}
@@ -47,10 +48,13 @@ export const CodePanel: FC<SenderProps> = ({ dispatch }) => {
         </div>
 
         <Routes>
-          <Route path={routes.root} element={<HighlightPage dispatch={dispatch} />} />
+          <Route
+            path={routes.root}
+            element={<HighlightPage message={message} dispatch={dispatch} />}
+          />
           <Route path={routes.about} element={<About />} />
         </Routes>
-      </motion.div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </motion.div>
   );
 };

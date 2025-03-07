@@ -27,8 +27,12 @@
 @container output (max-width: 500px) {
   .skill-container {
     img {
-      max-width: 250px;
+      width: 100%;
       min-height: auto;
+    }
+
+    h2 {
+      font-size: 2rem;
     }
   }
 }
