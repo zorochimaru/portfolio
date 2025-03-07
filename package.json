@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "lint:style": "stylelint 'src/**/*.{css}'",
     "lint:style:fix": "stylelint 'src/**/*.{css}' --fix",
     "build": "tsc -b && vite build",

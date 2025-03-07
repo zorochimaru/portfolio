@@ -54,7 +54,10 @@ export const Stack = () => {
   return (
     <>
       {loaded ? (
-        <motion.div variants={list} className="grid grid-cols-2 gap-10 p-4 items-center">
+        <motion.div
+          variants={list}
+          className="grid grid-cols-2 gap-10 p-4 items-center overflow-y-auto overflow-x-hidden scrollbar"
+        >
           {stackList.map((item, index) => (
             <motion.a
               key={item.img}

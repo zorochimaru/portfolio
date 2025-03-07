@@ -13,7 +13,7 @@ export const Introduce = () => {
       initial="hidden"
       animate="visible"
       exit="hidden"
-      className="text-white text-center p-10 my-auto flex flex-col items-center"
+      className="text-white text-center p-10 my-auto flex flex-col items-center overflow-y-auto overflow-x-hidden scrollbar"
     >
       <a href="https://www.linkedin.com/in/rasim-karimli/" target="_blank" className="mb-5">
         <img

@@ -1,7 +1,7 @@
 import { AnimatePresence, Variants } from 'motion/react';
 import * as motion from 'motion/react-client';
 import { FC, Suspense, useEffect, useRef } from 'react';
-import { Loading, Tab } from '../../components';
+import { Tab } from '../../components';
 import { Method } from '../../enums';
 
 import { CalculateExperience } from './CalculateExperience/CalculateExperience';
@@ -23,30 +23,38 @@ export const OutputPanel: FC<{ message: Method }> = ({ message }) => {
     const panel = panelRef.current;
     const handle = panel?.querySelector('.resize-handle');
 
-    const onMouseDown = (e: MouseEvent) => {
-      const startX = e.clientX;
-      const startWidth = panel?.offsetWidth || 0;
+    if (!panel || !handle) return;
 
-      const onMouseMove = (e: MouseEvent) => {
-        if (panel) {
-          const newWidth = startWidth - (e.clientX - startX);
-          panel.style.width = `${newWidth}px`;
-        }
+    const onPointerDown = (event: MouseEvent | TouchEvent) => {
+      const startX = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
+      const startWidth = panel.offsetWidth;
+
+      const onMove = (moveEvent: MouseEvent | TouchEvent) => {
+        const clientX =
+          moveEvent instanceof MouseEvent ? moveEvent.clientX : moveEvent.touches[0].clientX;
+        const newWidth = startWidth - (clientX - startX);
+        panel.style.width = `${newWidth}px`;
       };
 
-      const onMouseUp = () => {
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
+      const onUp = () => {
+        document.removeEventListener('mousemove', onMove as EventListener);
+        document.removeEventListener('mouseup', onUp);
+        document.removeEventListener('touchmove', onMove as EventListener);
+        document.removeEventListener('touchend', onUp);
       };
 
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUp);
+      document.addEventListener('mousemove', onMove as EventListener);
+      document.addEventListener('mouseup', onUp);
+      document.addEventListener('touchmove', onMove as EventListener, { passive: false });
+      document.addEventListener('touchend', onUp);
     };
 
-    handle?.addEventListener('mousedown', onMouseDown as EventListener);
+    handle.addEventListener('mousedown', onPointerDown as EventListener);
+    handle.addEventListener('touchstart', onPointerDown as EventListener, { passive: false });
 
     return () => {
-      handle?.removeEventListener('mousedown', onMouseDown as EventListener);
+      handle.removeEventListener('mousedown', onPointerDown as EventListener);
+      handle.removeEventListener('touchstart', onPointerDown as EventListener);
     };
   }, []);
 
@@ -62,8 +70,8 @@ export const OutputPanel: FC<{ message: Method }> = ({ message }) => {
       <div className="flex bg-dark-bg2">
         <Tab title="Output" />
       </div>
-      <div className="container overflow-y-auto scrollbar">
-        <Suspense fallback={<Loading />}>
+      <div className="container">
+        <Suspense>
           <AnimatePresence mode="popLayout">
             {message === Method.introduce && <Introduce />}
             {message === Method.showStack && <Stack />}

@@ -26,7 +26,7 @@ const classMethods = getClassMethods(code);
 
 export const HighlightPage: FC<SenderProps> = ({ dispatch }) => {
   const { resetAndSetCommand } = useTerminalCommandContext();
-  const [activeMethod, setActiveMethod] = useState<string | null>(Method.showStack);
+  const [activeMethod, setActiveMethod] = useState<string | null>(Method.introduce);
 
   const runMethod: React.MouseEventHandler<HTMLSpanElement> = (item) => {
     const methodName = item.currentTarget.textContent;
@@ -44,7 +44,10 @@ export const HighlightPage: FC<SenderProps> = ({ dispatch }) => {
   return (
     <Highlight theme={themes.vsDark} code={code} language="ts">
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={`${className} overflow-y-auto scrollbar`} style={style}>
+        <pre
+          className={`${className} overflow-y-auto scrollbar text-xs xl:text-base`}
+          style={style}
+        >
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ line })}>
               <span style={{ marginRight: '16px', userSelect: 'none' }}>{i + 1}</span>

@@ -1,7 +1,8 @@
 import { Variants } from 'motion/react';
 import * as motion from 'motion/react-client';
-import { usePreloadImages } from '../../../hooks';
 import { Loading } from '../../../components';
+import { usePreloadImages } from '../../../hooks';
+import './Projects.css';
 
 interface Project {
   name: string;
@@ -87,38 +88,40 @@ export const Projects = () => {
   return (
     <>
       {loaded ? (
-        <div className="grid md:grid-cols-3 gap-6 p-6">
-          {projects.map((project, index) => (
-            <motion.a
-              key={index}
-              href={project.link}
-              target="_blank"
-              variants={variants}
-              className="relative bg-gray-900 p-5 rounded-2xl shadow-lg overflow-hidden group"
-              initial="hidden"
-              animate="visible"
-              whileTap="tap"
-              whileHover="hover"
-              custom={index}
-            >
-              <img
-                src={`${import.meta.env.BASE_URL}/logos/${project.logo}`}
-                alt={project.name}
-                className="w-32 h-16 object-left object-contain"
-              />
+        <div className="projects-container overflow-y-auto overflow-x-hidden scrollbar">
+          <div className="projects-grid">
+            {projects.map((project, index) => (
+              <motion.a
+                key={index}
+                href={project.link}
+                target="_blank"
+                variants={variants}
+                className="relative bg-gray-900 p-5 rounded-2xl shadow-lg  group"
+                initial="hidden"
+                animate="visible"
+                whileTap="tap"
+                whileHover="hover"
+                custom={index}
+              >
+                <img
+                  src={`${import.meta.env.BASE_URL}/logos/${project.logo}`}
+                  alt={project.name}
+                  className="w-32 h-16 object-left object-contain"
+                />
 
-              <div className="mt-4">
-                <h3 className="text-lg mb-2 font-bold text-white">{project.name}</h3>
-                <p className="text-sm text-gray-400">{project.description}</p>
-              </div>
+                <div className="mt-4">
+                  <h3 className="text-lg mb-2 font-bold text-white">{project.name}</h3>
+                  <p className="text-sm text-gray-400">{project.description}</p>
+                </div>
 
-              <motion.img
-                src={`${import.meta.env.BASE_URL}/screenshots/${project.screenshot}`}
-                alt={`${project.name} Screenshot`}
-                className="absolute top-0 left-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              />
-            </motion.a>
-          ))}
+                <motion.img
+                  src={`${import.meta.env.BASE_URL}/screenshots/${project.screenshot}`}
+                  alt={`${project.name} Screenshot`}
+                  className="absolute top-0 left-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                />
+              </motion.a>
+            ))}
+          </div>
         </div>
       ) : (
         <Loading />

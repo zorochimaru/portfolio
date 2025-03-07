@@ -40,7 +40,7 @@ const experience: Experience[] = [
 
 export const CalculateExperience = () => {
   return (
-    <div className="relative flex flex-col items-center p-6">
+    <div className="relative flex flex-col items-center p-6 overflow-y-auto overflow-x-hidden scrollbar">
       <motion.div
         className="absolute w-1 bg-blue-500"
         initial={{ height: '0%' }}

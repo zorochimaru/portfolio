@@ -49,7 +49,7 @@ export const SoftSkills = () => {
   const gltf = useGLTF(`https://pub-4b5fac57f5074023bb9e348919bf61f4.r2.dev/rex.glb`);
 
   return (
-    <div className="soft-skills-container overflow-y-auto scrollbar">
+    <div className="soft-skills-container overflow-y-auto overflow-x-hidden scrollbar">
       {softSkills.map((image) =>
         image.fileName ? (
           <Image key={image.name} name={image.name} fileName={image.fileName} />
