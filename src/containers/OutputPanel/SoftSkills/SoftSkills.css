@@ -6,7 +6,7 @@
   container-type: inline-size;
   container-name: output;
   height: 80vh;
-  scroll-snap-align: center;
+  scroll-snap-align: end;
   display: flex;
   justify-content: center;
   align-items: center;

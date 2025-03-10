@@ -76,11 +76,11 @@ export const SoftSkills = () => {
             <Image key={image.name} name={image.name} fileName={image.fileName} />
           ) : (
             <section key="dinosaur" className="skill-container relative">
-              <h2 className="absolute top-0 text-8xl xl:text-9xl 2xl:top-1/7 z-10 left-4 font-bold text-cyan-300 uppercase font-[Oswald]">
+              <h2 className="absolute top-0 text-8xl xl:text-9xl z-10 left-4 font-bold text-cyan-300 uppercase font-[Oswald]">
                 look at <br />
                 this <br />
               </h2>
-              <h2 className="absolute 2xl:top-1/2 left-4 text-5xl 2xl:text-7xl font-bold text-cyan-300 uppercase font-[Oswald]">
+              <h2 className="absolute  left-4 text-5xl font-bold text-cyan-300 uppercase font-[Oswald]">
                 dinosaur🦖
               </h2>
               <Canvas>
