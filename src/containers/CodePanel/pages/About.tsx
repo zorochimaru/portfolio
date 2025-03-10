@@ -48,6 +48,8 @@ export const About = () => {
             Always eager to learn and grow, I strive to create impactful digital experiences that
             align with user needs and business goals.
           </p>
+
+          <p className="text-xl mt-4">This project is based on React, Tailwind and Motion</p>
         </div>
       </div>
     </>

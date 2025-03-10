@@ -33,14 +33,22 @@ export const Introduce = () => {
         </p>
 
         <p className="text-xl mt-6 text-gray-300">Thanks for checking out my portfolio!</p>
-
-        <a href="https://www.linkedin.com/in/rasim-karimli/" target="_blank" className="mt-4">
-          <img
-            src={`${import.meta.env.BASE_URL}/images/linkedin.webp`}
-            alt="linkedin"
-            style={{ width: '32px' }}
-          />
-        </a>
+        <div className="flex gap-4">
+          <a href="https://www.linkedin.com/in/rasim-karimli/" target="_blank" className="mt-4">
+            <img
+              src={`${import.meta.env.BASE_URL}/images/linkedin.webp`}
+              alt="linkedin"
+              style={{ width: '32px' }}
+            />
+          </a>
+          <a href="https://github.com/zorochimaru" target="_blank" className="mt-4">
+            <img
+              src={`${import.meta.env.BASE_URL}/images/github.svg`}
+              alt="linkedin"
+              style={{ width: '32px' }}
+            />
+          </a>
+        </div>
       </div>
     </motion.div>
   );
