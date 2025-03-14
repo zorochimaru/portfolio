@@ -44,7 +44,7 @@ export const CalculateExperience = () => {
       <h2 className="lg:hidden text-7xl font-bold text-cyan-300 text-center uppercase font-[Oswald]">
         My Experience
       </h2>
-      <div className="text-center min-h-full p-10 my-auto grid lg:overflow-y-auto lg:overflow-x-hidden scrollbar">
+      <div className="text-center lg:min-h-full p-10 my-auto grid lg:overflow-y-auto lg:overflow-x-hidden scrollbar">
         <div className="relative flex flex-col items-center">
           <motion.div
             className="absolute w-1 bg-blue-500"
