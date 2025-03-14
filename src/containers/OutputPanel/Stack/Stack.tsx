@@ -4,20 +4,21 @@ import { Loading } from '../../../components';
 import { usePreloadImages } from '../../../hooks';
 
 const stackList = [
-  { img: 'angular', url: 'https://angular.io/' },
-  { img: 'react', url: 'https://reactjs.org/' },
-  { img: 'nodeJs', url: 'https://nodejs.org/' },
-  { img: 'firebase', url: 'https://firebase.google.com/' },
-  { img: 'express', url: 'https://expressjs.com/' },
-  { img: 'sequelize', url: 'https://sequelize.org/' },
-  { img: 'mongoose', url: 'https://mongoosejs.com/' },
-  { img: 'typesense', url: 'https://typesense.org/' },
-  { img: 'contentful', url: 'https://www.contentful.com/' },
-  { img: 'material', url: 'https://material.angular.io/' },
-  { img: 'mui', url: 'https://mui.com/' },
-  { img: 'bootstrap', url: 'https://getbootstrap.com/' },
-  { img: 'tailwind', url: 'https://tailwindcss.com/' },
-  { img: 'ant', url: 'https://ant.design/' },
+  { img: 'angular.webp', url: 'https://angular.io/' },
+  { img: 'react.webp', url: 'https://reactjs.org/' },
+  { img: 'nodeJs.webp', url: 'https://nodejs.org/' },
+  { img: 'firebase.webp', url: 'https://firebase.google.com/' },
+  { img: 'express.webp', url: 'https://expressjs.com/' },
+  { img: 'sequelize.webp', url: 'https://sequelize.org/' },
+  { img: 'mongoose.webp', url: 'https://mongoosejs.com/' },
+  { img: 'typesense.webp', url: 'https://typesense.org/' },
+  { img: 'contentful.webp', url: 'https://www.contentful.com/' },
+  { img: 'redux.svg', url: 'https://redux.js.org/' },
+  { img: 'material.webp', url: 'https://material.angular.io/' },
+  { img: 'mui.webp', url: 'https://mui.com/' },
+  { img: 'bootstrap.webp', url: 'https://getbootstrap.com/' },
+  { img: 'tailwind.webp', url: 'https://tailwindcss.com/' },
+  { img: 'ant.webp', url: 'https://ant.design/' },
 ];
 
 const list: Variants = {
@@ -48,7 +49,7 @@ const variants: Variants = {
 
 export const Stack = () => {
   const loaded = usePreloadImages(
-    stackList.map((item) => `${import.meta.env.BASE_URL}/images/${item.img}.webp`),
+    stackList.map((item) => `${import.meta.env.BASE_URL}/images/${item.img}`),
   );
 
   return (
@@ -60,7 +61,7 @@ export const Stack = () => {
           </h2>
           <motion.div
             variants={list}
-            className="grid grid-cols-2 gap-10 p-4 items-center lg:overflow-y-auto lg:overflow-x-hidden scrollbar"
+            className="grid @sm:grid-cols-1 @md:grid-cols-2 @2xl:grid-cols-3 gap-15 p-4 items-center lg:overflow-y-auto lg:overflow-x-hidden scrollbar"
           >
             {stackList.map((item, index) => (
               <motion.a
@@ -75,8 +76,8 @@ export const Stack = () => {
                 target="_blank"
               >
                 <img
-                  className="w-[200px] mx-auto"
-                  src={`${import.meta.env.BASE_URL}/images/${item.img}.webp`}
+                  className="max-w-[200px] min-w-[100px] w-full object-contain max-h-[150px] mx-auto"
+                  src={`${import.meta.env.BASE_URL}/images/${item.img}`}
                 />
               </motion.a>
             ))}

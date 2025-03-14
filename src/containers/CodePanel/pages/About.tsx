@@ -49,7 +49,9 @@ export const About = () => {
             align with user needs and business goals.
           </p>
 
-          <p className="text-xl mt-4">This project is based on React, Tailwind and Motion</p>
+          <p className="text-xl mt-4">
+            This project is based on React, Tailwind, Motion and a little bit of Three.js
+          </p>
         </div>
       </div>
     </>

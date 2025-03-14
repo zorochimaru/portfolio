@@ -6,7 +6,7 @@
   container-type: inline-size;
   container-name: output;
   height: 80vh;
-  scroll-snap-align: end;
+  scroll-snap-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,6 +26,8 @@
 
 @container output (max-width: 500px) {
   .skill-container {
+    scroll-snap-align: end;
+
     img {
       width: 100%;
       min-height: auto;

@@ -35,7 +35,7 @@ export const OutputPanel: FC<{ message: Method }> = ({ message }) => {
       </div>
 
       {isMobile ? (
-        <div className="h-full flex flex-col gap-10 overflow-y-auto overflow-x-hidden scrollbar">
+        <div className="h-full flex flex-col gap-10 overflow-y-auto overflow-x-hidden scrollbar @container">
           <Introduce />
           <Stack />
           <CalculateExperience />
@@ -43,7 +43,7 @@ export const OutputPanel: FC<{ message: Method }> = ({ message }) => {
           <SoftSkills />
         </div>
       ) : (
-        <div className="h-[calc(100%-40px)] flex lg:justify-center flex-col gap-10">
+        <div className="h-[calc(100%-40px)] flex lg:justify-center flex-col gap-10 @container">
           <AnimatePresence mode="popLayout">
             {message === Method.introduce && <Introduce />}
             {message === Method.showStack && <Stack />}
