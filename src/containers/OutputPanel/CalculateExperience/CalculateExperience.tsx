@@ -6,36 +6,36 @@ interface Experience {
   link?: string;
 }
 const experience: Experience[] = [
-  { company: 'Region Plus', position: 'Content Manager', dates: '2013 - 2018' },
   {
-    company: 'BPA Solutions',
-    position: 'Frontend Developer (HTML, CSS, JS)',
-    dates: '2019 - 2020',
-  },
-  {
-    company: 'AISTGroup',
-    position: 'Frontend Developer (Angular, React)',
-    dates: '2019 - 2022',
-    link: 'https://www.linkedin.com/company/aistgroup/',
-  },
-  {
-    company: 'GeeksForLess',
-    position: 'Frontend Developer (Angular, Cordova)',
-    dates: '2020 - 2021',
-    link: 'https://www.linkedin.com/company/geeksforless/',
+    company: 'AltexSoft',
+    position: 'FullStack Developer',
+    dates: '2022 - 2025',
+    link: 'https://www.linkedin.com/company/altexsoft/',
   },
   {
     company: 'Lacera Ceramic Studio',
-    position: 'FullStack Developer (Angular, Firebase)',
+    position: 'FullStack Developer',
     dates: '2024',
     link: 'https://lacera.az/',
   },
   {
-    company: 'AltexSoft',
-    position: 'FullStack Developer (Angular, Firebase, NodeJs)',
-    dates: '2022 - 2025',
-    link: 'https://www.linkedin.com/company/altexsoft/',
+    company: 'GeeksForLess',
+    position: 'Frontend Developer',
+    dates: '2020 - 2021',
+    link: 'https://www.linkedin.com/company/geeksforless/',
   },
+  {
+    company: 'AISTGroup',
+    position: 'Frontend Developer',
+    dates: '2019 - 2022',
+    link: 'https://www.linkedin.com/company/aistgroup/',
+  },
+  {
+    company: 'BPA Solutions',
+    position: 'Frontend Developer',
+    dates: '2019 - 2020',
+  },
+  { company: 'Region Plus', position: 'Content Manager', dates: '2013 - 2018' },
 ];
 
 export const CalculateExperience = () => {
