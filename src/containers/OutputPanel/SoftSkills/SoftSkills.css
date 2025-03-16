@@ -5,7 +5,6 @@
 .skill-container {
   container-type: inline-size;
   container-name: output;
-  height: 80vh;
   scroll-snap-align: center;
   display: flex;
   justify-content: center;

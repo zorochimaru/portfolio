@@ -17,7 +17,7 @@ function Image({ name, fileName }: { name: string; fileName: string }) {
   const ref = useRef(null);
 
   return (
-    <section className="skill-container">
+    <section className="skill-container h-[50vh] lg:h-full">
       <div ref={ref}>
         <img src={`${import.meta.env.BASE_URL}/images/${fileName}`} alt={name} />
         <h2 className="text-5xl font-bold text-cyan-300 uppercase font-[Oswald]">{name}</h2>
@@ -75,7 +75,10 @@ export const SoftSkills = () => {
           image.fileName ? (
             <Image key={image.name} name={image.name} fileName={image.fileName} />
           ) : (
-            <section key="dinosaur" className="skill-container relative">
+            <section
+              key="dinosaur"
+              className="skill-container relative mt-[20vh] h-[80vh] lg:mt-0 lg:h-full"
+            >
               <h2 className="absolute top-0 text-8xl xl:text-9xl z-10 left-4 font-bold text-cyan-300 uppercase font-[Oswald]">
                 look at <br />
                 this <br />
