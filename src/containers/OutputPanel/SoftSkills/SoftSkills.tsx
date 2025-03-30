@@ -20,7 +20,7 @@ function Image({ name, fileName }: { name: string; fileName: string }) {
     <section className="skill-container h-[50vh] lg:h-full">
       <div ref={ref}>
         <img src={`${import.meta.env.BASE_URL}/images/${fileName}`} alt={name} />
-        <h2 className="text-5xl font-bold text-cyan-300 uppercase font-[Oswald]">{name}</h2>
+        <h2 className="text-5xl z-1 font-bold text-cyan-300 uppercase font-[Oswald]">{name}</h2>
       </div>
     </section>
   );
